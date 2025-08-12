@@ -81,20 +81,20 @@ export default function GuidePage({ onBack }: GuidePageProps) {
               Chọn dịch vụ bạn muốn tìm hiểu
             </p>
           </div>
-          <div className="grid gap-6 md:gap-8 mx-auto md:max-w-[720px]">
-            {" "}
+          <div className="grid gap-6 md:gap-8 mx-auto w-full md:max-w-[720px] lg:max-w-[840px]">
             {services.map((service, i) => (
               <Card
                 key={i}
-                className="w-full max-w-[720px] p-6 lg:p-7 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-[1.02] cursor-pointer group"
+                className="w-full rounded-2xl p-6 lg:p-7 bg-white/80 backdrop-blur-sm border-0 shadow-lg
+                 hover:shadow-xl transform transition-all duration-300 hover:scale-[1.01]
+                 cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
               >
                 <div className="flex items-center space-x-6">
-                  <div className="flex-shrink-0 bg-gray-50 p-4 rounded-xl group-hover:bg-blue-50 transition-colors">
+                  <div className="flex-shrink-0 bg-gray-50 p-3 md:p-4 rounded-xl group-hover:bg-blue-50 transition-colors">
                     {service.icon}
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl lg:text-[20px] font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">
-                      {" "}
                       {service.title}
                     </h3>
                   </div>
