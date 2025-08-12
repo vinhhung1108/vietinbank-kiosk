@@ -71,8 +71,9 @@ export default function GuidePage({ onBack }: GuidePageProps) {
       </div>
 
       <div className="container mx-auto px-6 py-24">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
+        <div className="max-w-4xl mx-auto">
+          {" "}
+          <div className="text-center mb-10">
             <h1 className="text-3xl md:text-5xl font-bold text-blue-900 mb-4">
               HƯỚNG DẪN DỊCH VỤ
             </h1>
@@ -80,19 +81,20 @@ export default function GuidePage({ onBack }: GuidePageProps) {
               Chọn dịch vụ bạn muốn tìm hiểu
             </p>
           </div>
-
-          <div className="grid gap-6 md:gap-8">
+          <div className="grid gap-6 md:gap-8 mx-auto md:max-w-[720px]">
+            {" "}
             {services.map((service, i) => (
               <Card
                 key={i}
-                className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-[1.02] cursor-pointer group"
+                className="w-full max-w-[720px] p-6 lg:p-7 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-[1.02] cursor-pointer group"
               >
                 <div className="flex items-center space-x-6">
                   <div className="flex-shrink-0 bg-gray-50 p-4 rounded-xl group-hover:bg-blue-50 transition-colors">
                     {service.icon}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">
+                    <h3 className="text-xl lg:text-[20px] font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">
+                      {" "}
                       {service.title}
                     </h3>
                   </div>
