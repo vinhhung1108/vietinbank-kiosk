@@ -48,18 +48,18 @@ export default function GuidePage({ onBack }: GuidePageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 relative">
       {/* Logo */}
-      <div className="absolute top-8 right-8">
+      <div className="absolute top-3 right-3 md:top-8 md:right-8">
         <Image
           src="/vietinbank.png"
           alt="VietinBank Logo"
           width={192}
           height={80}
-          className="h-auto w-48"
+          className="h-auto w-28 md:w-40 lg:w-48"
         />
       </div>
 
       {/* Back */}
-      <div className="absolute top-8 left-8">
+      <div className="absolute top-3 left-3 md:top-8 md:left-8 z-10">
         <Button
           onClick={onBack}
           variant="outline"
