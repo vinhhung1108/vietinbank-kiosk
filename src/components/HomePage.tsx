@@ -24,7 +24,7 @@ export default function HomePage({ onNavigateToGuide }: HomePageProps) {
 
       {/* Nội dung */}
       <div className="flex flex-col items-center justify-center min-h-screen px-6">
-        <div className="max-w-4xl text-center space-y-12">
+        <div className="max-w-4xl text-center space-y-12 -mt-8 md:-mt-16">
           <h1 className="text-4xl md:text-6xl font-bold text-blue-900 leading-tight">
             VIETINBANK SÔNG HÀN
             <br />
