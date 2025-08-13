@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -22,26 +23,32 @@ export default function GuidePage({ onBack }: GuidePageProps) {
     {
       title: "HƯỚNG DẪN THANH TOÁN VIỆN PHÍ",
       icon: <CreditCard className="w-8 h-8 text-blue-600" />,
+      href: "/guide/hospital-fee",
     },
     {
       title: "HƯỚNG DẪN THANH TOÁN HỌC PHÍ",
       icon: <GraduationCap className="w-8 h-8 text-green-600" />,
+      href: "/guide/tuition-fee",
     },
     {
       title: "CÔNG CỤ TÍNH TOÁN GỐC LÃI VAY",
       icon: <Calculator className="w-8 h-8 text-purple-600" />,
+      href: "/guide/loan-calculator",
     },
     {
       title: "TRA CỨU BIỂU PHÍ",
       icon: <FileText className="w-8 h-8 text-orange-600" />,
+      href: "/guide/fees",
     },
     {
       title: "MỞ TÀI KHOẢN ONLINE",
       icon: <UserPlus className="w-8 h-8 text-red-600" />,
+      href: "/guide/open-account",
     },
     {
       title: "GIỚI THIỆU VỀ VIETINBANK SÔNG HÀN",
       icon: <Building2 className="w-8 h-8 text-indigo-600" />,
+      href: "/guide/about",
     },
   ];
 
@@ -52,7 +59,6 @@ export default function GuidePage({ onBack }: GuidePageProps) {
         src="/background_songhan.webp"
         alt=""
         fill
-        priority
         sizes="100vw"
         draggable={false}
         className="pointer-events-none select-none object-cover blur-sm md:blur lg:blur-lg scale-105 -z-10"
@@ -85,27 +91,32 @@ export default function GuidePage({ onBack }: GuidePageProps) {
         {/* Danh sách dịch vụ – gọn trên desktop */}
         <div className="grid gap-6 md:gap-8 mx-auto w-full md:max-w-[720px] lg:max-w-[840px]">
           {services.map((service, i) => (
-            <Card
+            <Link
               key={i}
-              tabIndex={0}
-              className="w-full rounded-2xl p-6 lg:p-7 bg-white/80 backdrop-blur-sm border-0 shadow-lg
-                         hover:shadow-xl transform transition-all duration-300 hover:scale-[1.01]
-                         cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+              href={service.href}
+              aria-label={service.title}
+              className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 rounded-2xl"
             >
-              <div className="flex items-center gap-6">
-                <div className="flex-shrink-0 bg-gray-50 p-3 md:p-4 rounded-xl group-hover:bg-blue-50 transition-colors">
-                  {service.icon}
+              <Card
+                className="w-full rounded-2xl p-6 lg:p-7 bg-white/80 backdrop-blur-sm border-0 shadow-lg
+                           transition duration-300 hover:shadow-xl hover:scale-[1.01]
+                           cursor-pointer group"
+              >
+                <div className="flex items-center gap-6">
+                  <div className="flex-shrink-0 bg-gray-50 p-3 md:p-4 rounded-xl group-hover:bg-blue-50 transition-colors">
+                    {service.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl lg:text-[20px] font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">
+                      {service.title}
+                    </h3>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <ArrowLeft className="w-6 h-6 text-gray-400 rotate-180 group-hover:text-blue-600 transition-colors" />
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl lg:text-[20px] font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">
-                    {service.title}
-                  </h3>
-                </div>
-                <div className="flex-shrink-0">
-                  <ArrowLeft className="w-6 h-6 text-gray-400 rotate-180 group-hover:text-blue-600 transition-colors" />
-                </div>
-              </div>
-            </Card>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>
