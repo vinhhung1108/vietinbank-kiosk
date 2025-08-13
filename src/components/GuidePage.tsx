@@ -60,7 +60,7 @@ export default function GuidePage({ onBack }: GuidePageProps) {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white/70 via-white/45 to-white/25" />
 
       {/* Hàng nút Back (không absolute, không chồng Header) */}
-      <div className="mx-auto max-w-6xl px-6 pt-6 md:pt-8">
+      <div className="mx-auto max-w-6xl px-6 pt-6 md:pt-8 mb-4">
         <Button
           onClick={onBack}
           variant="outline"
