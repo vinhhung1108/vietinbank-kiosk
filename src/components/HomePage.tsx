@@ -9,38 +9,49 @@ interface HomePageProps {
 
 export default function HomePage({ onNavigateToGuide }: HomePageProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 relative">
-      {/* Logo */}
-      <div className="absolute top-3 right-3 md:top-8 md:right-8">
+    <main className="relative">
+      {/* Hero: full-bleed background */}
+      <section
+        className="
+          relative w-full
+          min-h-[calc(100svh-64px)] md:min-h-[calc(100svh-80px)]
+          overflow-hidden
+        "
+      >
+        {/* Ảnh nền phủ toàn bộ */}
         <Image
-          src="/vietinbank.png"
-          alt="VietinBank Logo"
-          width={192}
-          height={80}
-          className="h-auto w-28 md:w-40 lg:w-48" // ↓ nhỏ trên mobile, lớn dần theo breakpoint
+          src="/background_songhan.jpg"
+          alt="Đà Nẵng"
+          fill
+          className="object-cover"
           priority
+          sizes="100vw"
         />
-      </div>
 
-      {/* Nội dung */}
-      <div className="flex flex-col items-center justify-center min-h-screen px-6">
-        <div className="max-w-4xl text-center space-y-12 -mt-8 md:-mt-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-blue-900 leading-tight">
+        {/* Overlay nhẹ để chữ/nút nổi hơn */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/10 to-transparent" />
+
+        {/* Nội dung giữa ảnh – nhích lên để tránh mảng họa tiết */}
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center
+                     gap-6 sm:gap-7 translate-y-[-24%] md:translate-y-[-28%] lg:translate-y-[-32%]"
+        >
+          <h1 className="font-bold leading-tight text-blue-800 drop-shadow-sm text-2xl sm:text-3xl md:text-5xl">
             VIETINBANK SÔNG HÀN
-            <br />
-            KÍNH CHÀO QUÝ KHÁCH
+            <span className="block">KÍNH CHÀO QUÝ KHÁCH</span>
           </h1>
 
           <Button
+            aria-label="Xem hướng dẫn dịch vụ"
             onClick={onNavigateToGuide}
-            className="bg-green-600 hover:bg-green-700 text-white px-12 py-6 text-xl rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+            className="bg-green-600 hover:bg-green-700 text-white
+                       px-8 sm:px-8 md:px-10 py-4 md:py-6
+                       text-lg md:text-xl rounded-xl shadow-lg hover:shadow-xl transition"
           >
-            HƯỚNG DẪN SỬ DỤNG DỊCH VỤ
+            HƯỚNG DẪN DỊCH VỤ
           </Button>
         </div>
-
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-blue-100/30 to-transparent" />
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

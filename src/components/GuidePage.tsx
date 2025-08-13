@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import Image from "next/image";
 import {
   ArrowLeft,
   CreditCard,
@@ -12,6 +11,7 @@ import {
   UserPlus,
   Building2,
 } from "lucide-react";
+import Image from "next/image";
 
 interface GuidePageProps {
   onBack: () => void;
@@ -46,20 +46,21 @@ export default function GuidePage({ onBack }: GuidePageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 relative">
-      {/* Logo */}
-      <div className="absolute top-3 right-3 md:top-8 md:right-8">
-        <Image
-          src="/vietinbank.png"
-          alt="VietinBank Logo"
-          width={192}
-          height={80}
-          className="h-auto w-28 md:w-40 lg:w-48"
-        />
-      </div>
+    <main className="relative min-h-screen">
+      {/* Nền ảnh mờ + lớp phủ sáng để tăng tương phản */}
+      <Image
+        src="/background_songhan.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        draggable={false}
+        className="pointer-events-none select-none object-cover blur-sm md:blur lg:blur-lg scale-105 -z-10"
+      />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white/70 via-white/45 to-white/25" />
 
-      {/* Back */}
-      <div className="absolute top-3 left-3 md:top-8 md:left-8 z-10">
+      {/* Hàng nút Back (không absolute, không chồng Header) */}
+      <div className="mx-auto max-w-6xl px-6 pt-6 md:pt-8">
         <Button
           onClick={onBack}
           variant="outline"
@@ -70,45 +71,47 @@ export default function GuidePage({ onBack }: GuidePageProps) {
         </Button>
       </div>
 
-      <div className="container mx-auto px-6 py-24">
-        <div className="max-w-4xl mx-auto">
-          {" "}
-          <div className="text-center mb-10">
-            <h1 className="text-3xl md:text-5xl font-bold text-blue-900 mb-4">
-              HƯỚNG DẪN DỊCH VỤ
-            </h1>
-            <p className="text-lg text-gray-600">
-              Chọn dịch vụ bạn muốn tìm hiểu
-            </p>
-          </div>
-          <div className="grid gap-6 md:gap-8 mx-auto w-full md:max-w-[720px] lg:max-w-[840px]">
-            {services.map((service, i) => (
-              <Card
-                key={i}
-                className="w-full rounded-2xl p-6 lg:p-7 bg-white/80 backdrop-blur-sm border-0 shadow-lg
-                 hover:shadow-xl transform transition-all duration-300 hover:scale-[1.01]
-                 cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
-              >
-                <div className="flex items-center space-x-6">
-                  <div className="flex-shrink-0 bg-gray-50 p-3 md:p-4 rounded-xl group-hover:bg-blue-50 transition-colors">
-                    {service.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl lg:text-[20px] font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">
-                      {service.title}
-                    </h3>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <ArrowLeft className="w-6 h-6 text-gray-400 rotate-180 group-hover:text-blue-600 transition-colors" />
-                  </div>
+      {/* Phần tiêu đề */}
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl mx-auto text-center mb-10 md:mb-16">
+          <h1 className="text-3xl md:text-5xl font-bold text-blue-900 mb-4">
+            HƯỚNG DẪN DỊCH VỤ
+          </h1>
+          <p className="text-lg text-gray-700">
+            Chọn dịch vụ bạn muốn tìm hiểu
+          </p>
+        </div>
+
+        {/* Danh sách dịch vụ – gọn trên desktop */}
+        <div className="grid gap-6 md:gap-8 mx-auto w-full md:max-w-[720px] lg:max-w-[840px]">
+          {services.map((service, i) => (
+            <Card
+              key={i}
+              tabIndex={0}
+              className="w-full rounded-2xl p-6 lg:p-7 bg-white/80 backdrop-blur-sm border-0 shadow-lg
+                         hover:shadow-xl transform transition-all duration-300 hover:scale-[1.01]
+                         cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+            >
+              <div className="flex items-center gap-6">
+                <div className="flex-shrink-0 bg-gray-50 p-3 md:p-4 rounded-xl group-hover:bg-blue-50 transition-colors">
+                  {service.icon}
                 </div>
-              </Card>
-            ))}
-          </div>
+                <div className="flex-1">
+                  <h3 className="text-xl lg:text-[20px] font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">
+                    {service.title}
+                  </h3>
+                </div>
+                <div className="flex-shrink-0">
+                  <ArrowLeft className="w-6 h-6 text-gray-400 rotate-180 group-hover:text-blue-600 transition-colors" />
+                </div>
+              </div>
+            </Card>
+          ))}
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-blue-100/30 to-transparent" />
-    </div>
+      {/* khoảng đệm đáy nhỏ */}
+      <div className="h-10 md:h-16" />
+    </main>
   );
 }
