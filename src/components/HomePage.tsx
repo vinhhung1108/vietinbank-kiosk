@@ -20,7 +20,7 @@ export default function HomePage({ onNavigateToGuide }: HomePageProps) {
       >
         {/* Ảnh nền phủ toàn bộ */}
         <Image
-          src="/background_songhan.jpg"
+          src="/background_songhan.webp"
           alt="Đà Nẵng"
           fill
           className="object-cover"

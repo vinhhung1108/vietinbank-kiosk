@@ -49,7 +49,7 @@ export default function GuidePage({ onBack }: GuidePageProps) {
     <main className="relative min-h-screen">
       {/* Nền ảnh mờ + lớp phủ sáng để tăng tương phản */}
       <Image
-        src="/background_songhan.jpg"
+        src="/background_songhan.webp"
         alt=""
         fill
         priority
